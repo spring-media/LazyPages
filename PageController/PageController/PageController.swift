@@ -38,20 +38,9 @@ public class PageController: UIViewController {
     pageViewController.dataSource = self
     pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
     addChildViewController(pageViewController)
-    addSubview(pageViewController.view, toView: view)
+    view.addAndPinSubView(pageViewController.view)
   }
 
-  private func addSubview(subView:UIView, toView parentView:UIView) {
-    parentView.addSubview(subView)
-    
-    var viewBindingsDict = [String: AnyObject]()
-    viewBindingsDict["subView"] = subView
-    parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
-      options: [], metrics: nil, views: viewBindingsDict))
-    parentView.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
-      options: [], metrics: nil, views: viewBindingsDict))
-  }
-  
   private func viewControllerForIndex(index: Int, var cache: [Int: UIViewController], dataSource: PageControllerDataSource?) -> UIViewController? {
     guard let cachedController = viewControllerCache[index] else {
       let viewController = dataSource?.viewControllerAtIndex(index)

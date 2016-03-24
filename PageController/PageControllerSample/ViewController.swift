@@ -20,8 +20,6 @@ class ViewController: UIViewController {
       pageController.dataSource = self
     }
   }
-  
-  
 }
 
 extension ViewController: PageControllerDataSource {

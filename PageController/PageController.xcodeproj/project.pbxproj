@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7E6C59E21CA3EF6C007264A6 /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6C59E11CA3EF6C007264A6 /* UIColor+Random.swift */; };
+		7E6C59E41CA3F037007264A6 /* PageIndexCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6C59E31CA3F037007264A6 /* PageIndexCollectionViewController.swift */; };
+		7E6C59E71CA3F52D007264A6 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6C59E61CA3F52D007264A6 /* UIView+Autolayout.swift */; };
 		7EB262781CA2C69B003C26DC /* PageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB262771CA2C69B003C26DC /* PageController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EB2627F1CA2C69B003C26DC /* PageController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB262741CA2C69B003C26DC /* PageController.framework */; };
 		7EB262841CA2C69B003C26DC /* PageControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB262831CA2C69B003C26DC /* PageControllerTests.swift */; };
@@ -55,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		7E6C59E11CA3EF6C007264A6 /* UIColor+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
+		7E6C59E31CA3F037007264A6 /* PageIndexCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndexCollectionViewController.swift; sourceTree = "<group>"; };
+		7E6C59E61CA3F52D007264A6 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		7EB262741CA2C69B003C26DC /* PageController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PageController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB262771CA2C69B003C26DC /* PageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageController.h; sourceTree = "<group>"; };
 		7EB262791CA2C69B003C26DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -107,6 +111,14 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		7E6C59E51CA3F50D007264A6 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7E6C59E61CA3F52D007264A6 /* UIView+Autolayout.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		7EB2626A1CA2C69B003C26DC = {
 			isa = PBXGroup;
 			children = (
@@ -130,10 +142,12 @@
 		7EB262761CA2C69B003C26DC /* PageController */ = {
 			isa = PBXGroup;
 			children = (
+				7E6C59E51CA3F50D007264A6 /* Helper */,
 				7EB262771CA2C69B003C26DC /* PageController.h */,
 				7EB262791CA2C69B003C26DC /* Info.plist */,
 				7EB262A91CA2CB2A003C26DC /* PageController.swift */,
 				7EB262C21CA2E96B003C26DC /* ViewController+Index.swift */,
+				7E6C59E31CA3F037007264A6 /* PageIndexCollectionViewController.swift */,
 			);
 			path = PageController;
 			sourceTree = "<group>";
@@ -303,6 +317,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7E6C59E41CA3F037007264A6 /* PageIndexCollectionViewController.swift in Sources */,
+				7E6C59E71CA3F52D007264A6 /* UIView+Autolayout.swift in Sources */,
 				7EB262AA1CA2CB2A003C26DC /* PageController.swift in Sources */,
 				7EB262C31CA2E96B003C26DC /* ViewController+Index.swift in Sources */,
 			);
