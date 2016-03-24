@@ -38,10 +38,10 @@ public class PageController: UIViewController {
     pageViewController.dataSource = self
     pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
     addChildViewController(pageViewController)
-    self.addSubview(pageViewController.view, toView: view)
+    addSubview(pageViewController.view, toView: view)
   }
-  
-  func addSubview(subView:UIView, toView parentView:UIView) {
+
+  private func addSubview(subView:UIView, toView parentView:UIView) {
     parentView.addSubview(subView)
     
     var viewBindingsDict = [String: AnyObject]()
@@ -52,11 +52,11 @@ public class PageController: UIViewController {
       options: [], metrics: nil, views: viewBindingsDict))
   }
   
-  private func viewControllerForIndex(index: Int, cache: [Int: UIViewController], dataSource: PageControllerDataSource?) -> UIViewController? {
+  private func viewControllerForIndex(index: Int, var cache: [Int: UIViewController], dataSource: PageControllerDataSource?) -> UIViewController? {
     guard let cachedController = viewControllerCache[index] else {
       let viewController = dataSource?.viewControllerAtIndex(index)
       viewController?.index = index
-      
+      cache[index] = viewController
       return viewController
     }
     
@@ -66,8 +66,6 @@ public class PageController: UIViewController {
 
 extension PageController: UIPageViewControllerDataSource {
   public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-   
-    
     guard let numberOfPages = dataSource?.numberOfViewControllers() else {
       return nil
     }
