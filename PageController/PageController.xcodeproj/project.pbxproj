@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E6C59E21CA3EF6C007264A6 /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6C59E11CA3EF6C007264A6 /* UIColor+Random.swift */; };
 		7EB262781CA2C69B003C26DC /* PageController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EB262771CA2C69B003C26DC /* PageController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EB2627F1CA2C69B003C26DC /* PageController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB262741CA2C69B003C26DC /* PageController.framework */; };
 		7EB262841CA2C69B003C26DC /* PageControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB262831CA2C69B003C26DC /* PageControllerTests.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7E6C59E11CA3EF6C007264A6 /* UIColor+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
 		7EB262741CA2C69B003C26DC /* PageController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PageController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB262771CA2C69B003C26DC /* PageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageController.h; sourceTree = "<group>"; };
 		7EB262791CA2C69B003C26DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E6C59E01CA3EF5D007264A6 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7E6C59E11CA3EF6C007264A6 /* UIColor+Random.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		7EB2626A1CA2C69B003C26DC = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +150,7 @@
 		7EB262931CA2C6BC003C26DC /* PageControllerSample */ = {
 			isa = PBXGroup;
 			children = (
+				7E6C59E01CA3EF5D007264A6 /* Helper */,
 				7EB262941CA2C6BC003C26DC /* AppDelegate.swift */,
 				7EB262961CA2C6BC003C26DC /* ViewController.swift */,
 				7EB262981CA2C6BC003C26DC /* Main.storyboard */,
@@ -310,6 +321,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EB262971CA2C6BC003C26DC /* ViewController.swift in Sources */,
+				7E6C59E21CA3EF6C007264A6 /* UIColor+Random.swift in Sources */,
 				7EB262951CA2C6BC003C26DC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,6 +548,7 @@
 				7EB2628A1CA2C69B003C26DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7EB2628B1CA2C69B003C26DC /* Build configuration list for PBXNativeTarget "PageControllerTests" */ = {
 			isa = XCConfigurationList;
@@ -544,6 +557,7 @@
 				7EB2628D1CA2C69B003C26DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7EB262A11CA2C6BC003C26DC /* Build configuration list for PBXNativeTarget "PageControllerSample" */ = {
 			isa = XCConfigurationList;
@@ -552,6 +566,7 @@
 				7EB262A31CA2C6BC003C26DC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

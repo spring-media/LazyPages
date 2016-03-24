@@ -21,20 +21,14 @@ class ViewController: UIViewController {
     }
   }
   
-  private func randomColor() -> UIColor {
-    let randomRed = CGFloat(drand48())
-    let randomGreen = CGFloat(drand48())
-    let randomBlue = CGFloat(drand48())
-    
-    return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
-  }
+  
 }
 
 extension ViewController: PageControllerDataSource {
   func viewControllerAtIndex(index: Int) -> UIViewController {
     print("request view controller for index \(index)")
     let viewController = UIViewController()
-    viewController.view.backgroundColor = randomColor()
+    viewController.view.backgroundColor = UIColor.randomColor()
     return viewController
   }
   
