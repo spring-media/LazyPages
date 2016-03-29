@@ -90,7 +90,6 @@ class ViewController: UIViewController {
 
 extension ViewController: PageControllerDataSource {
   func viewControllerAtIndex(index: Int) -> UIViewController {
-    print("request view controller for index \(index)")
     let viewController = UIViewController()
     viewController.view.backgroundColor = cachedColorFromMap(&cachedColors, index: index)
     return viewController

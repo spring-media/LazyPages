@@ -41,6 +41,7 @@ public class PageController: UIViewController {
     super.viewDidLoad()
     
     pageViewController.dataSource = self
+    pageViewController.delegate = self
     pageViewController.view.translatesAutoresizingMaskIntoConstraints = false
     addChildViewController(pageViewController)
     view.addAndPinSubView(pageViewController.view)
@@ -66,6 +67,20 @@ public class PageController: UIViewController {
         self.pageViewController.setViewControllers([page], direction: .Forward, animated: false, completion: nil)
       })
     })
+  }
+}
+
+extension PageController: UIPageViewControllerDelegate {
+  public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    if !completed {
+      return
+    }
+    
+    guard let currentIndex = pageViewController.viewControllers?.last?.index else {
+      return
+    }
+    
+    pageIndex?.collectionView?.scrollToItemAtIndexPath(NSIndexPath(forRow: currentIndex, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: true)
   }
 }
 
@@ -98,6 +113,6 @@ extension PageController: UIPageViewControllerDataSource {
 extension PageController: UICollectionViewDelegate {
   public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     goToIndex(indexPath.row)
-  
+    pageIndex?.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
   }
 }
