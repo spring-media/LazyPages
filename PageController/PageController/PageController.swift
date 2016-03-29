@@ -18,6 +18,7 @@ public protocol PageControllerDataSource: class {
 public class PageController: UIViewController {
   private let pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
   private var viewControllerCache = [Int: UIViewController]()
+  private var currentIndex = 0
   public weak var pageIndex: PageIndexCollectionViewController? {
     didSet {
       pageIndex?.collectionView?.delegate = self
@@ -62,9 +63,13 @@ public class PageController: UIViewController {
     guard let page = viewControllerForIndex(index, cache: &viewControllerCache, dataSource: dataSource) else {
       return
     }
-    pageViewController.setViewControllers([page], direction: .Forward, animated: true, completion: { finished in
+    
+    let direction: UIPageViewControllerNavigationDirection = index > currentIndex ? .Forward : .Reverse
+    
+    pageViewController.setViewControllers([page], direction: direction, animated: true, completion: { finished in
       dispatch_async(dispatch_get_main_queue(), {
-        self.pageViewController.setViewControllers([page], direction: .Forward, animated: false, completion: nil)
+        self.pageViewController.setViewControllers([page], direction: direction, animated: false, completion: nil)
+        self.currentIndex = index
       })
     })
   }
@@ -79,6 +84,8 @@ extension PageController: UIPageViewControllerDelegate {
     guard let currentIndex = pageViewController.viewControllers?.last?.index else {
       return
     }
+    
+    self.currentIndex = currentIndex
     
     pageIndex?.collectionView?.scrollToItemAtIndexPath(NSIndexPath(forRow: currentIndex, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: true)
   }
@@ -112,7 +119,10 @@ extension PageController: UIPageViewControllerDataSource {
 
 extension PageController: UICollectionViewDelegate {
   public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    goToIndex(indexPath.row)
-    pageIndex?.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
+    let index = indexPath.row
+    if index != currentIndex {
+      goToIndex(index)
+      pageIndex?.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
+    }
   }
 }
