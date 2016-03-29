@@ -9,12 +9,16 @@
 import Foundation
 
 public class PageIndexCollectionViewController: UIViewController {
+  
+  public weak var pageController: PageController?
+  
   public var collectionView: UICollectionView? {
     didSet {
       guard let collectionView = collectionView else {
         return
       }
       
+      collectionView.delegate = self.pageController
       view.addAndPinSubView(collectionView)
     }
   }

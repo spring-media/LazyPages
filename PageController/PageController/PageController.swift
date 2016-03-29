@@ -18,6 +18,11 @@ public protocol PageControllerDataSource: class {
 public class PageController: UIViewController {
   private let pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
   private var viewControllerCache = [Int: UIViewController]()
+  public weak var pageIndex: PageIndexCollectionViewController? {
+    didSet {
+      pageIndex?.collectionView?.delegate = self
+    }
+  }
   
   public weak var dataSource: PageControllerDataSource? {
     didSet {
@@ -41,7 +46,7 @@ public class PageController: UIViewController {
     view.addAndPinSubView(pageViewController.view)
   }
 
-  private func viewControllerForIndex(index: Int, var cache: [Int: UIViewController], dataSource: PageControllerDataSource?) -> UIViewController? {
+  private func viewControllerForIndex(index: Int, inout cache: [Int: UIViewController], dataSource: PageControllerDataSource?) -> UIViewController? {
     guard let cachedController = viewControllerCache[index] else {
       let viewController = dataSource?.viewControllerAtIndex(index)
       viewController?.index = index
@@ -50,6 +55,17 @@ public class PageController: UIViewController {
     }
     
     return cachedController
+  }
+  
+  private func goToIndex(index: Int) {
+    guard let page = viewControllerForIndex(index, cache: &viewControllerCache, dataSource: dataSource) else {
+      return
+    }
+    pageViewController.setViewControllers([page], direction: .Forward, animated: true, completion: { finished in
+      dispatch_async(dispatch_get_main_queue(), {
+        self.pageViewController.setViewControllers([page], direction: .Forward, animated: false, completion: nil)
+      })
+    })
   }
 }
 
@@ -63,7 +79,7 @@ extension PageController: UIPageViewControllerDataSource {
       return nil
     }
     
-    return viewControllerForIndex(index - 1, cache: viewControllerCache, dataSource: dataSource)
+    return viewControllerForIndex(index - 1, cache: &viewControllerCache, dataSource: dataSource)
   }
   
   public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
@@ -75,6 +91,13 @@ extension PageController: UIPageViewControllerDataSource {
       return nil
     }
     
-    return viewControllerForIndex(index + 1, cache: viewControllerCache, dataSource: dataSource)
+    return viewControllerForIndex(index + 1, cache: &viewControllerCache, dataSource: dataSource)
+  }
+}
+
+extension PageController: UICollectionViewDelegate {
+  public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    goToIndex(indexPath.row)
+  
   }
 }
