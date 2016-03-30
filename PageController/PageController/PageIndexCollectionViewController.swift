@@ -26,6 +26,8 @@ public class PageIndexCollectionViewController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   
   public override func viewDidLoad() {
+    super.viewDidLoad()
+    
     collectionView.dataSource = self
     collectionView.delegate = self
   }
@@ -34,7 +36,7 @@ public class PageIndexCollectionViewController: UIViewController {
 extension PageIndexCollectionViewController: UICollectionViewDataSource {
   public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     assert(pageController != nil, "The page controller reference in the PageIndexCollectionViewController cannot be nil")
-    return pageController!.numberOfItems!
+    return pageController?.numberOfItems ?? 0
   }
   
   public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

@@ -20,14 +20,14 @@ class ViewController: UIViewController {
   
   weak var pageController: PageController? {
     didSet {
-      pageController?.pageIndex = self.pageIndex
+      pageController?.pageIndexController = self.pageIndex
       pageIndex?.pageController = self.pageController
     }
   }
   
   weak var pageIndex: PageIndexCollectionViewController? {
     didSet {
-      pageController?.pageIndex = self.pageIndex
+      pageController?.pageIndexController = self.pageIndex
       pageIndex?.pageController = self.pageController
     }
   }
