@@ -36,7 +36,7 @@ public class PageIndexCollectionViewController: UIViewController {
 extension PageIndexCollectionViewController: UICollectionViewDataSource {
   public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     assert(pageController != nil, "The page controller reference in the PageIndexCollectionViewController cannot be nil")
-    return pageController?.numberOfItems ?? 0
+    return pageController!.numberOfItems
   }
   
   public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {

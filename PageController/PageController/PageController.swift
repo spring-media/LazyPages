@@ -45,7 +45,7 @@ public class PageController: UIViewController {
   
   /// Number of items currently shown
   public var numberOfItems: Int {
-    return dataSource!.numberOfViewControllers()
+    return dataSource.numberOfViewControllers()
   }
   
   public required init?(coder aDecoder: NSCoder) {
