@@ -19,11 +19,7 @@ public class PageController: UIViewController {
   private let pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
   private var viewControllerCache = [Int: UIViewController]()
   private var currentIndex = 0
-  public weak var pageIndex: PageIndexCollectionViewController? {
-    didSet {
-      pageIndex?.collectionView?.delegate = self
-    }
-  }
+  public weak var pageIndex: PageIndexCollectionViewController?
   
   public weak var dataSource: PageControllerDataSource? {
     didSet {
@@ -32,6 +28,10 @@ public class PageController: UIViewController {
       viewControllerCache[0] = viewController
       pageViewController.setViewControllers([viewController], direction: .Reverse, animated: false, completion: nil)
     }
+  }
+  
+  public var numberOfItems: Int? {
+    return self.dataSource?.numberOfViewControllers()
   }
   
   public required init?(coder aDecoder: NSCoder) {
@@ -49,7 +49,7 @@ public class PageController: UIViewController {
   }
 
   private func viewControllerForIndex(index: Int, inout cache: [Int: UIViewController], dataSource: PageControllerDataSource?) -> UIViewController? {
-    guard let cachedController = viewControllerCache[index] else {
+    guard let cachedController = cache[index] else {
       let viewController = dataSource?.viewControllerAtIndex(index)
       viewController?.index = index
       cache[index] = viewController
@@ -59,7 +59,7 @@ public class PageController: UIViewController {
     return cachedController
   }
   
-  private func goToIndex(index: Int) {
+  public func goToIndex(index: Int) {
     guard let page = viewControllerForIndex(index, cache: &viewControllerCache, dataSource: dataSource) else {
       return
     }
@@ -114,15 +114,5 @@ extension PageController: UIPageViewControllerDataSource {
     }
     
     return viewControllerForIndex(index + 1, cache: &viewControllerCache, dataSource: dataSource)
-  }
-}
-
-extension PageController: UICollectionViewDelegate {
-  public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    let index = indexPath.row
-    if index != currentIndex {
-      goToIndex(index)
-      pageIndex?.collectionView?.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
-    }
   }
 }

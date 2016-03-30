@@ -8,9 +8,14 @@
 
 import Foundation
 
+public protocol PageIndexCollectionViewControllerDataSource: class {
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+}
+
 public class PageIndexCollectionViewController: UIViewController {
   
   public weak var pageController: PageController?
+  public weak var dataSource: PageIndexCollectionViewControllerDataSource?
   
   public var collectionView: UICollectionView? {
     didSet {
@@ -18,8 +23,37 @@ public class PageIndexCollectionViewController: UIViewController {
         return
       }
       
-      collectionView.delegate = self.pageController
       view.addAndPinSubView(collectionView)
     }
+  }
+  
+  public override func viewDidLoad() {
+    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .Horizontal
+    let initializatingCollectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
+    initializatingCollectionView.translatesAutoresizingMaskIntoConstraints = false
+    initializatingCollectionView.dataSource = self
+    initializatingCollectionView.delegate = self
+    self.collectionView = initializatingCollectionView
+  }
+}
+
+extension PageIndexCollectionViewController: UICollectionViewDataSource {
+  public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    assert(pageController != nil, "The page controller reference in the PageIndexCollectionViewController cannot be nil")
+    return pageController!.numberOfItems!
+  }
+  
+  public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    assert(dataSource != nil, "The data source of the PageIndexCollectionViewController cannot be nil")
+    return dataSource!.collectionView(collectionView, cellForItemAtIndexPath: indexPath)
+  }
+}
+
+extension PageIndexCollectionViewController: UICollectionViewDelegate {
+  public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    let index = indexPath.row
+    pageController?.goToIndex(index)
+    collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
   }
 }

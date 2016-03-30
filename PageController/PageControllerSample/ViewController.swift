@@ -31,12 +31,7 @@ class ViewController: UIViewController {
       pageIndex?.pageController = self.pageController
     }
   }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-  }
-  
+
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     guard let identifier = segue.identifier else {
       return
@@ -60,23 +55,11 @@ class ViewController: UIViewController {
       }
       
       self.pageIndex = pageIndex
-      configurePageIndexViewController(pageIndex)
+      pageIndex.dataSource = self
+      pageIndex.collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
     }
   }
-  
-  private func configurePageIndexViewController(pageIndex: PageIndexCollectionViewController) {
-    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-    layout.scrollDirection = .Horizontal
-    let collectionView = UICollectionView(frame: pageIndex.view.frame, collectionViewLayout: layout)
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
-    collectionView.dataSource = self
-    //collectionView.delegate = self
-    collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-    collectionView.backgroundColor = UIColor.redColor()
-    
-    pageIndex.collectionView = collectionView
-  }
-  
+
   private func cachedColorFromMap(inout map: [Int: UIColor], index: Int) -> UIColor {
     guard let color = map[index] else {
       let newColor = UIColor.randomColor()
@@ -100,11 +83,7 @@ extension ViewController: PageControllerDataSource {
   }
 }
 
-extension ViewController: UICollectionViewDataSource {
-  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return viewControllersNumber
-  }
-
+extension ViewController: PageIndexCollectionViewControllerDataSource {
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
 
