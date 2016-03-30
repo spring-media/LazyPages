@@ -9,32 +9,25 @@
 import Foundation
 
 public protocol PageIndexCollectionViewControllerDataSource: class {
+  /**
+   The cell to be shown at the the given index
+   
+   - parameter collectionView: the collection view where the index is represented
+   - parameter indexPath: the index path of the requested cell
+   */
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
 }
 
+/// This class represents the index of the page controller, a view controller containing a collection view
 public class PageIndexCollectionViewController: UIViewController {
-  
   public weak var pageController: PageController?
   public weak var dataSource: PageIndexCollectionViewControllerDataSource?
   
-  public var collectionView: UICollectionView? {
-    didSet {
-      guard let collectionView = collectionView else {
-        return
-      }
-      
-      view.addAndPinSubView(collectionView)
-    }
-  }
+  @IBOutlet weak var collectionView: UICollectionView!
   
   public override func viewDidLoad() {
-    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-    layout.scrollDirection = .Horizontal
-    let initializatingCollectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
-    initializatingCollectionView.translatesAutoresizingMaskIntoConstraints = false
-    initializatingCollectionView.dataSource = self
-    initializatingCollectionView.delegate = self
-    self.collectionView = initializatingCollectionView
+    collectionView.dataSource = self
+    collectionView.delegate = self
   }
 }
 

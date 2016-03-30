@@ -9,12 +9,25 @@
 import Foundation
 import UIKit
 
+/// The Data source of the page controller
 public protocol PageControllerDataSource: class {
+  
+  /**
+   Asks the data source for a view controller given its index
+   
+   - parameter index: The index when the view controller should be placed
+   
+   - returns: The view controller to be shown at the given index
+   */
   func viewControllerAtIndex(index: Int) -> UIViewController
   
+  /**
+   - returns: The number of view controllers to be shown
+   */
   func numberOfViewControllers() -> Int
 }
 
+/// This view controller contains the page views
 public class PageController: UIViewController {
   private let pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
   private var viewControllerCache = [Int: UIViewController]()
@@ -30,6 +43,7 @@ public class PageController: UIViewController {
     }
   }
   
+  /// Number of items currently shown
   public var numberOfItems: Int? {
     return self.dataSource?.numberOfViewControllers()
   }
@@ -59,6 +73,11 @@ public class PageController: UIViewController {
     return cachedController
   }
   
+  /**
+   Moves the page controller to show the given index
+   
+   - parameter index: The index to move
+   */
   public func goToIndex(index: Int) {
     guard let page = viewControllerForIndex(index, cache: &viewControllerCache, dataSource: dataSource) else {
       return

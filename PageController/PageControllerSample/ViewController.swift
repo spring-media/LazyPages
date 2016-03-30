@@ -56,7 +56,6 @@ class ViewController: UIViewController {
       
       self.pageIndex = pageIndex
       pageIndex.dataSource = self
-      pageIndex.collectionView?.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
     }
   }
 

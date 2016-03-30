@@ -11,7 +11,7 @@ import UIKit
 
 extension UIColor {
   /**
-   Returns a random color
+   - returns: A random color
    */
   static func randomColor() -> UIColor {
     let randomRed = CGFloat(drand48())
