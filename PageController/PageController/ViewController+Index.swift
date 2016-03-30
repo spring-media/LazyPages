@@ -7,6 +7,7 @@
 //
 
 import ObjectiveC
+import UIKit
 
 // Declare a global var to produce a unique address as the assoc object handle
 var AssociatedObjectHandle: UInt8 = 0
