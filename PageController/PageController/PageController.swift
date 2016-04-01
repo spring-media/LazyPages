@@ -52,6 +52,12 @@ public class PageController: UIViewController {
     super.init(coder: aDecoder)
   }
   
+  override public func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    
+    viewControllerCache = [:]
+  }
+  
   override public func viewDidLoad() {
     super.viewDidLoad()
     
