@@ -24,7 +24,7 @@ public class PageIndexCollectionViewController: UIViewController {
   public weak var pageController: PageController?
   public weak var dataSource: PageIndexCollectionViewControllerDataSource?
   
-  @IBOutlet weak var collectionView: UICollectionView!
+  @IBOutlet public weak var collectionView: UICollectionView!
   
   public override func viewDidLoad() {
     super.viewDidLoad()
