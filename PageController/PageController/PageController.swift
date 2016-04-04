@@ -109,7 +109,7 @@ extension PageController: UIPageViewControllerDelegate {
     
     self.currentIndex = currentIndex
     
-    pageIndexController?.collectionView?.scrollToItemAtIndexPath(NSIndexPath(forRow: currentIndex, inSection: 0), atScrollPosition: .CenteredHorizontally, animated: true)
+    pageIndexController?.collectionView?.selectItemAtIndexPath(NSIndexPath(forRow: currentIndex, inSection: 0), animated: true, scrollPosition: .CenteredHorizontally)
   }
 }
 
