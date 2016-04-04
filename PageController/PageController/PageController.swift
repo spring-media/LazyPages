@@ -69,6 +69,10 @@ public class PageController: UIViewController {
   }
 
   private func viewControllerForIndex(index: Int) -> UIViewController? {
+    guard let numberOfPages = dataSource?.numberOfViewControllers() where index >= 0 && index < numberOfPages  else {
+      return nil
+    }
+    
     guard let cachedController = viewControllerCache[index] else {
       let viewController = dataSource.viewControllerAtIndex(index)
       viewController.index = index
@@ -115,23 +119,15 @@ extension PageController: UIPageViewControllerDelegate {
 
 extension PageController: UIPageViewControllerDataSource {
   public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-    guard let numberOfPages = dataSource?.numberOfViewControllers() else {
+    guard let index = viewController.index else {
       return nil
     }
-    
-    guard let index = viewController.index where index-1 >= 0 && index-1 < numberOfPages else {
-      return nil
-    }
-    
+
     return viewControllerForIndex(index - 1)
   }
   
   public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-    guard let numberOfPages = dataSource?.numberOfViewControllers() else {
-      return nil
-    }
-    
-    guard let index = viewController.index where index+1 >= 0 && index+1 < numberOfPages else {
+    guard let index = viewController.index else {
       return nil
     }
     
