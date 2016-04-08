@@ -32,6 +32,11 @@ class ViewController: UIViewController {
     }
   }
 
+  override func viewDidLoad() {
+     super.viewDidLoad()
+    
+    pageController?.goToIndex(6)
+  }
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     guard let identifier = segue.identifier else {
       return

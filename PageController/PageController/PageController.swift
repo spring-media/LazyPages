@@ -100,6 +100,7 @@ public class PageController: UIViewController {
       dispatch_async(dispatch_get_main_queue(), {
         self.pageViewController.setViewControllers([page], direction: direction, animated: false, completion: nil)
         self.currentIndex = index
+        self.pageIndexController?.collectionView.selectItemAtIndexPath(NSIndexPath(forRow: index, inSection: 0), animated: true, scrollPosition: .CenteredHorizontally)
       })
     })
   }
