@@ -84,7 +84,7 @@ public class PageController: UIViewController {
   }
   
   /**
-   Moves the page controller to show the given index
+   Moves the page controller to show the given index. The index view also scrolls to the desired index. 
    
    - parameter index: The index to move
    */

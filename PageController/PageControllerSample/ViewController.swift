@@ -10,13 +10,31 @@ import UIKit
 import PageController
 
 class ViewController: UIViewController {
+  private enum ViewControllerTag {
+    case Color
+    case Label
+  }
+  
   private enum Segue: String {
     case PageController = "PageControllerSegue"
     case PageIndex = "PageIndexSegue"
   }
   
+  private enum ViewControllerIdentifier: String {
+    case Color = "ColorViewController"
+    case Label = "LabelViewController"
+  }
+  
   var cachedColors = [Int: UIColor]()
-  let viewControllersNumber = 12
+  private let viewControllersToLoad = [
+    ViewControllerTag.Color,
+    ViewControllerTag.Label,
+    ViewControllerTag.Color,
+    ViewControllerTag.Label,
+    ViewControllerTag.Label,
+    ViewControllerTag.Color,
+    ViewControllerTag.Label
+  ]
   
   weak var pageController: PageController? {
     didSet {
@@ -77,13 +95,29 @@ class ViewController: UIViewController {
 
 extension ViewController: PageControllerDataSource {
   func viewControllerAtIndex(index: Int) -> UIViewController {
-    let viewController = UIViewController()
-    viewController.view.backgroundColor = cachedColorFromMap(&cachedColors, index: index)
-    return viewController
+    print("Loading page at index \(index)")
+    let viewControllerTag = viewControllersToLoad[index]
+    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+    let viewControllerToReturn: UIViewController
+    
+    switch viewControllerTag {
+    case ViewControllerTag.Color:
+      let colorViewController = storyboard.instantiateViewControllerWithIdentifier(ViewControllerIdentifier.Color.rawValue) as! ColorViewController
+      let v = colorViewController.view
+      colorViewController.colorView.backgroundColor = cachedColorFromMap(&cachedColors, index: index)
+      viewControllerToReturn = colorViewController
+    case ViewControllerTag.Label:
+      let labelViewController = storyboard.instantiateViewControllerWithIdentifier(ViewControllerIdentifier.Label.rawValue) as! LabelViewController
+      let v = labelViewController.view
+      labelViewController.label.text = "Index \(index)"
+      viewControllerToReturn = labelViewController
+    }
+    
+    return viewControllerToReturn
   }
   
   func numberOfViewControllers() -> Int {
-    return viewControllersNumber
+    return viewControllersToLoad.count
   }
 }
 

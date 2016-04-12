@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E49A9DB1CBD321100CB1A76 /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E49A9DA1CBD321100CB1A76 /* LabelViewController.swift */; };
 		7E6C59E21CA3EF6C007264A6 /* UIColor+Random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6C59E11CA3EF6C007264A6 /* UIColor+Random.swift */; };
 		7E6C59E41CA3F037007264A6 /* PageIndexCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6C59E31CA3F037007264A6 /* PageIndexCollectionViewController.swift */; };
 		7E6C59E71CA3F52D007264A6 /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E6C59E61CA3F52D007264A6 /* UIView+Autolayout.swift */; };
@@ -22,6 +23,7 @@
 		7EB262A51CA2C6C6003C26DC /* PageController.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB262741CA2C69B003C26DC /* PageController.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7EB262AA1CA2CB2A003C26DC /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB262A91CA2CB2A003C26DC /* PageController.swift */; };
 		7EB262C31CA2E96B003C26DC /* ViewController+Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EB262C21CA2E96B003C26DC /* ViewController+Index.swift */; };
+		7EDBDF991CBD42E5003A3498 /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EDBDF981CBD42E5003A3498 /* ColorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		7E49A9DA1CBD321100CB1A76 /* LabelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		7E6C59E11CA3EF6C007264A6 /* UIColor+Random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Random.swift"; sourceTree = "<group>"; };
 		7E6C59E31CA3F037007264A6 /* PageIndexCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageIndexCollectionViewController.swift; sourceTree = "<group>"; };
 		7E6C59E61CA3F52D007264A6 /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 		7EB262A01CA2C6BC003C26DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7EB262A91CA2CB2A003C26DC /* PageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageController.swift; sourceTree = "<group>"; };
 		7EB262C21CA2E96B003C26DC /* ViewController+Index.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewController+Index.swift"; sourceTree = "<group>"; };
+		7EDBDF981CBD42E5003A3498 /* ColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +175,8 @@
 				7EB2629B1CA2C6BC003C26DC /* Assets.xcassets */,
 				7EB2629D1CA2C6BC003C26DC /* LaunchScreen.storyboard */,
 				7EB262A01CA2C6BC003C26DC /* Info.plist */,
+				7E49A9DA1CBD321100CB1A76 /* LabelViewController.swift */,
+				7EDBDF981CBD42E5003A3498 /* ColorViewController.swift */,
 			);
 			path = PageControllerSample;
 			sourceTree = "<group>";
@@ -339,6 +345,8 @@
 				7EB262971CA2C6BC003C26DC /* ViewController.swift in Sources */,
 				7E6C59E21CA3EF6C007264A6 /* UIColor+Random.swift in Sources */,
 				7EB262951CA2C6BC003C26DC /* AppDelegate.swift in Sources */,
+				7EDBDF991CBD42E5003A3498 /* ColorViewController.swift in Sources */,
+				7E49A9DB1CBD321100CB1A76 /* LabelViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
