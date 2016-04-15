@@ -22,7 +22,7 @@ To create it from the storyboard:
 
 * Add an instance of UIViewController to it. it will the the container of the Page Controller.
 * Add two container views, one for the index and one for the page controller.
-* Linked to these container views we have now two view controllers. In the desired index view controller set the class to "PageIndexCollectionViewController", and in the PageController to "PageController". 
+* Linked to these container views we have now two view controllers. In the desired index view controller set the class to "PageIndexCollectionViewController", and in the PageController to "PageController". Set their module to "LazyPages".
 * Inside the Index View Controller drag and drop an instance of UICollectionView and link it through an outlet to the collectionView property of the class. This collection view will represent the index; we will be able to customize the cells inside the Storyboard.
 
 In the code of our view controller, we have to link both view controllers together and set the proper data source. We can do that in the prepareForSegue method:
