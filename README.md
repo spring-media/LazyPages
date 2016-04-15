@@ -1,5 +1,12 @@
 # LazyPages
 
+[![CI Status](http://img.shields.io/travis/WeltN24/LazyPages.svg)](https://travis-ci.org/WeltN24/LazyPages)
+[![License](https://img.shields.io/cocoapods/l/LazyPages.svg)](http://cocoapods.org/pods/LazyPages)
+[![Platform](https://img.shields.io/cocoapods/p/LazyPages.svg)](http://cocoapods.org/pods/LazyPages)
+[![swift2](https://img.shields.io/badge/swift2-compatible-4BC51D.svg)](https://developer.apple.com/swift)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
+[![Version](https://img.shields.io/cocoapods/v/GraphQLicious.svg)](http://cocoapods.org/pods/LazyPages)
+
 ![MacDown Screenshot](READMEImages/LazyPages.gif)
 
 **LazyPages** is a highly customizable library that helps you to show a scrollable list of view controllers synchronized with an index. It is written in `Swift 2.2` for `iOS 8+`. 
