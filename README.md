@@ -2,30 +2,34 @@
 
 ![MacDown Screenshot](READMEImages/LazyPages.gif)
 
-LazyPages is a highly customizable library that helps you to show a scrollable list of view controllers synchronized with an index. It is written in Swift for iOS. 
+**LazyPages** is a highly customizable library that helps you to show a scrollable list of view controllers synchronized with an index. It is written in `Swift 2.2` for `iOS 8+`. 
 
 ## Requirements
+
 * iOS 8.0+
-* Xcode 7.0+
+* Xcode 7.3+
 
 ## Features
-* Lazy load of view controllers, that allow us not to have all of them in memory when initialazing LazyPages. Furthermore, we can also initialise it with all the UIViewController instances or with closures that provides them.
-* View controllers are cached, and freed when memory is low.
-* View controllers can be instances of different subclasses of UIViewController.
-* Highly customizable, we can place the index and pages views as we wish, as well as desigining the index cells, with the help of Storyboard. Scroll directions could be set as wished.
-* Public API to go to a desired page.
-* Usage of UIViewController, not UIView.
+
+- [x] Lazy load of view controllers, that allow us not to have all of them in memory when initialazing LazyPages. Furthermore, we can also initialise it with all the `UIViewController` instances or with closures that provides them.
+- [x] View controllers are cached, and freed when memory is low.
+- [x] View controllers can be instances of different subclasses of `UIViewController`.
+- [x] Highly customizable, we can place the index and pages views as we wish, as well as desigining the index cells, with the help of Storyboard. Scroll directions could be set as wished.
+- [x] Public API to go to a desired page.
+- [x] Usage of `UIViewController`, not `UIView`.
 
 ## Usage
-LazyPages can be created from the storyboard or just programmatically. 
+
+An instance of `LazyPages` can be created from the storyboard or just programmatically. 
+
 To create it from the storyboard: 
 
-* Add an instance of UIViewController to it. it will the the container of the Page Controller.
+* Add an instance of `UIViewController` to it. It will be the container of the Page Controller.
 * Add two container views, one for the index and one for the page controller.
-* Linked to these container views we have now two view controllers. In the desired index view controller set the class to "PageIndexCollectionViewController", and in the PageController to "PageController". Set their module to "LazyPages".
-* Inside the Index View Controller drag and drop an instance of UICollectionView and link it through an outlet to the collectionView property of the class. This collection view will represent the index; we will be able to customize the cells inside the Storyboard.
+* Linked to these container views we have now two view controllers. In the desired index view controller set the class to `PageIndexCollectionViewController`, and in the PageController to `PageController`. Set their module to `LazyPages`.
+* Inside the Index View Controller drag and drop an instance of `UICollectionView` and link it through an outlet to the `collectionView` property of the class. This collection view will represent the index; we will be able to customize the cells inside the Storyboard.
 
-In the code of our view controller, we have to link both view controllers together and set the proper data source. We can do that in the prepareForSegue method:
+In the code of our view controller, we have to link both view controllers together and set the proper data source. We can do that in the `prepareForSegue` method:
 
 ```swift
 override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -56,15 +60,14 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
   }
 ```
 
-If you want to implement it programmatically, you have to create and instance of UICollectionView and assign it to the property of PageIndexCollectionViewController as we explained in the storyboard case. As specified before, we have to assign the data source classes, and in both cases we have to link them together:
+If you want to implement it programmatically, you have to create and instance of `UICollectionView` and assign it to the property of `PageIndexCollectionViewController` as we explained in the storyboard case. As specified before we have to link them together in both cases:
 
 ```swift
 pageController?.pageIndexController = self.pageIndex
 pageIndex?.pageController = self.pageController
 ```
 
-To populate the views, we assign the data source properties for both the index and the pagecontroller. For the Page Controller we can implement the data source ourselves, or use the provided data source classes (PageControllerArrayDataSource and PageControllerClosureDataSource) that require an array of UIViewController the former, or closures the latter.
-You can easily define a visual selected state for the index cells by overriding the selected property of the UICollectionViewCell instance:
+To populate the views, we assign the data source properties for both the index and the Page Controller. For the Page Controller we can implement the data source ourselves, or use the provided data source classes (`PageControllerArrayDataSource` and `PageControllerClosureDataSource`) that respectively require an array of `UIViewController` or closures. We can easily define a visual state for selection in the index view by overriding the `selected` property in the `UICollectionViewCell` subclass that we provide in the `PageIndexCollectionViewController` data source:
 
 ```swift
 override var selected: Bool {
@@ -97,12 +100,15 @@ Run `carthage update` to build the framework and drag the built `LazyPages.frame
 - Add `LazyPages.framework`
 
 ## License
+
 LazyPages is available under the MIT license.
 
 ## Authors
-LazyPages were made in-house by WeltN24
+
+LazyPages was made in-house by WeltN24
 
 ### Contributors
-César Vargas Casaseca, cesar.vargas-casaseca@weltn24.de, @toupper on Github, @VargasCasaseca on Twitter
 
-Vittorio Monaco, vittorio.monaco@weltn24.de, @vittoriom on Github, @Vittorio_Monaco on Twitter
+César Vargas Casaseca, cesar.vargas-casaseca@weltn24.de, [@toupper](https://github.com/toupper) on Github, [@VargasCasaseca](https://twitter.com/VargasCasaseca) on Twitter
+
+Vittorio Monaco, vittorio.monaco@weltn24.de, [@vittoriom](https://github.com/vittoriom) on Github, [@Vittorio_Monaco](https://twitter.com/Vittorio_Monaco) on Twitter
