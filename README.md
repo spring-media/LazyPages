@@ -89,6 +89,12 @@ override var selected: Bool {
 ```
 
 ##  Installation
+### CocoaPods
+`LazyPages` is available through CocoaPods. To install it, simply add the following line to your Podfile
+
+```
+pod "LazyPages"
+```
 ### Carthage
 To integrate LazyPages into your Xcode project using Carthage, specify it in your `Cartfile`:
 
