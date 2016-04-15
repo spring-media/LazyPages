@@ -64,10 +64,37 @@ pageIndex?.pageController = self.pageController
 ```
 
 To populate the views, we assign the data source properties for both the index and the pagecontroller. For the Page Controller we can implement the data source ourselves, or use the provided data source classes (PageControllerArrayDataSource and PageControllerClosureDataSource) that require an array of UIViewController the former, or closures the latter.
+You can easily define a visual selected state for the index cells by overriding the selected property of the UICollectionViewCell instance:
+
+```swift
+override var selected: Bool {
+    didSet {
+      if selected {
+        backgroundColor = UIColor.grayColor()
+      } else {
+        backgroundColor = UIColor.whiteColor()
+      }
+    }
+  }
+```
 
 ##  Installation
+### Carthage
+To integrate LazyPages into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "WeltN24/LazyPages"
+```
+
+Run `carthage update` to build the framework and drag the built `LazyPages.framework` into your Xcode project.
+
 ### Manual Installation
-Drag and drop the 
+ You can still add `LazyPages` as a submodule, drag and drop `LazyPages.xcodeproj` into your project, and embed `LazyPages.framework` in your target.
+
+- Drag `LazyPages.xcodeproj` to your project
+- Select your app target
+- Click the + button on the Embedded binaries section
+- Add `LazyPages.framework`
 
 ## License
 LazyPages is available under the MIT license.
