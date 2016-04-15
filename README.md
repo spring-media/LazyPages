@@ -5,7 +5,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/LazyPages.svg)](http://cocoapods.org/pods/LazyPages)
 [![swift2](https://img.shields.io/badge/swift2-compatible-4BC51D.svg)](https://developer.apple.com/swift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
-[![Version](https://img.shields.io/cocoapods/v/GraphQLicious.svg)](http://cocoapods.org/pods/LazyPages)
+[![Version](https://img.shields.io/cocoapods/v/LazyPages.svg)](http://cocoapods.org/pods/LazyPages)
 
 ![MacDown Screenshot](READMEImages/LazyPages.gif)
 
