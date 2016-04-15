@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7EB2627F1CA2C69B003C26DC /* LazyPages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EB262741CA2C69B003C26DC /* LazyPages.framework */; };
+		7EBDD5A11CC0D34200F0303E /* PageControllerArrayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBDD5A01CC0D34200F0303E /* PageControllerArrayDataSource.swift */; };
+		7EBDD5A31CC0D65C00F0303E /* PageControllerClosureDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBDD5A21CC0D65C00F0303E /* PageControllerClosureDataSource.swift */; };
 		7ED353101CBFCACB00201BCA /* UIView+Autolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED3530A1CBFCACB00201BCA /* UIView+Autolayout.swift */; };
 		7ED353121CBFCACB00201BCA /* LazyPages.h in Headers */ = {isa = PBXBuildFile; fileRef = 7ED3530C1CBFCACB00201BCA /* LazyPages.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7ED353131CBFCACB00201BCA /* PageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED3530D1CBFCACB00201BCA /* PageController.swift */; };
@@ -61,6 +63,8 @@
 /* Begin PBXFileReference section */
 		7EB262741CA2C69B003C26DC /* LazyPages.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LazyPages.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EB2627E1CA2C69B003C26DC /* LazyPages.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LazyPages.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EBDD5A01CC0D34200F0303E /* PageControllerArrayDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControllerArrayDataSource.swift; sourceTree = "<group>"; };
+		7EBDD5A21CC0D65C00F0303E /* PageControllerClosureDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControllerClosureDataSource.swift; sourceTree = "<group>"; };
 		7ED3530A1CBFCACB00201BCA /* UIView+Autolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Autolayout.swift"; sourceTree = "<group>"; };
 		7ED3530B1CBFCACB00201BCA /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7ED3530C1CBFCACB00201BCA /* LazyPages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LazyPages.h; sourceTree = "<group>"; };
@@ -137,6 +141,8 @@
 				7ED3530C1CBFCACB00201BCA /* LazyPages.h */,
 				7ED3530D1CBFCACB00201BCA /* PageController.swift */,
 				7ED3530E1CBFCACB00201BCA /* PageIndexCollectionViewController.swift */,
+				7EBDD5A01CC0D34200F0303E /* PageControllerArrayDataSource.swift */,
+				7EBDD5A21CC0D65C00F0303E /* PageControllerClosureDataSource.swift */,
 			);
 			path = LazyPages;
 			sourceTree = "<group>";
@@ -326,7 +332,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EBDD5A11CC0D34200F0303E /* PageControllerArrayDataSource.swift in Sources */,
 				7ED3533D1CBFCC6500201BCA /* ViewController+Index.swift in Sources */,
+				7EBDD5A31CC0D65C00F0303E /* PageControllerClosureDataSource.swift in Sources */,
 				7ED353141CBFCACB00201BCA /* PageIndexCollectionViewController.swift in Sources */,
 				7ED353131CBFCACB00201BCA /* PageController.swift in Sources */,
 				7ED353101CBFCACB00201BCA /* UIView+Autolayout.swift in Sources */,
@@ -522,7 +530,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = LazyPagesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.axelspringer.PageControllerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = de.WeltN24.PageControllerTests;
 				PRODUCT_NAME = LazyPages;
 			};
 			name = Debug;
@@ -532,7 +540,7 @@
 			buildSettings = {
 				INFOPLIST_FILE = LazyPagesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.axelspringer.PageControllerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = de.WeltN24.PageControllerTests;
 				PRODUCT_NAME = LazyPages;
 			};
 			name = Release;
@@ -604,6 +612,7 @@
 				7ED3535A1CBFD14300201BCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
