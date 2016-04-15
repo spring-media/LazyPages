@@ -9,7 +9,7 @@ LazyPages is a highly customizable library that helps you to show a scrollable l
 * Xcode 7.0+
 
 ## Features
-* Lazy load of view controllers, that allow us not to have all of them in memory when initialazing LazyPages.
+* Lazy load of view controllers, that allow us not to have all of them in memory when initialazing LazyPages. Furthermore, we can also initialise it with all the UIViewController instances or with closures that provides them.
 * View controllers are cached, and freed when memory is low.
 * View controllers can be instances of different subclasses of UIViewController.
 * Highly customizable, we can place the index and pages views as we wish, as well as desigining the index cells, with the help of Storyboard. Scroll directions could be set as wished.
@@ -63,7 +63,7 @@ pageController?.pageIndexController = self.pageIndex
 pageIndex?.pageController = self.pageController
 ```
 
-To populate the views, we implement the data source methods, for both the index and the pagecontroller, returning an UICollectionViewCell or UIViewController respectively.
+To populate the views, we assign the data source properties for both the index and the pagecontroller. For the Page Controller we can implement the data source ourselves, or use the provided data source classes (PageControllerArrayDataSource and PageControllerClosureDataSource) that require an array of UIViewController the former, or closures the latter.
 
 ##  Installation
 ### Manual Installation
