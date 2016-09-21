@@ -271,9 +271,11 @@
 				TargetAttributes = {
 					7EB262731CA2C69B003C26DC = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 					};
 					7EB2627D1CA2C69B003C26DC = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0800;
 					};
 					7ED353481CBFD14300201BCA = {
 						CreatedOnToolsVersion = 7.3;
@@ -503,6 +505,7 @@
 				PRODUCT_NAME = LazyPages;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -522,6 +525,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.WeltN24.LazyPages;
 				PRODUCT_NAME = LazyPages;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -532,6 +536,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.WeltN24.PageControllerTests;
 				PRODUCT_NAME = LazyPages;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -542,6 +547,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.WeltN24.PageControllerTests;
 				PRODUCT_NAME = LazyPages;
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
