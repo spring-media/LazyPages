@@ -19,7 +19,7 @@ public protocol PageControllerDataSource: class {
    
    - returns: The view controller to be shown at the given index
    */
-  func viewControllerAtIndex(index: Int) -> UIViewController
+  func viewControllerAtIndex(_ index: Int) -> UIViewController
   
   /**
    - returns: The number of view controllers to be shown
@@ -28,23 +28,23 @@ public protocol PageControllerDataSource: class {
 }
 
 /// This view controller contains the page views
-public class PageController: UIViewController {
-  private let pageViewController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
-  private var viewControllerCache = [Int: UIViewController]()
-  private var currentIndex = 0
-  public weak var pageIndexController: PageIndexCollectionViewController?
+open class PageController: UIViewController {
+  fileprivate let pageViewController = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+  fileprivate var viewControllerCache = [Int: UIViewController]()
+  fileprivate var currentIndex = 0
+  open weak var pageIndexController: PageIndexCollectionViewController?
   
-  public weak var dataSource: PageControllerDataSource! {
+  open weak var dataSource: PageControllerDataSource! {
     didSet {
       let viewController = dataSource.viewControllerAtIndex(0)
       viewController.index = 0
       viewControllerCache[0] = viewController
-      pageViewController.setViewControllers([viewController], direction: .Reverse, animated: false, completion: nil)
+      pageViewController.setViewControllers([viewController], direction: .reverse, animated: false, completion: nil)
     }
   }
   
   /// Number of items currently shown
-  public var numberOfItems: Int {
+  open var numberOfItems: Int {
     return dataSource.numberOfViewControllers()
   }
   
@@ -52,13 +52,13 @@ public class PageController: UIViewController {
     super.init(coder: aDecoder)
   }
   
-  override public func didReceiveMemoryWarning() {
+  override open func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     
     viewControllerCache = [:]
   }
   
-  override public func viewDidLoad() {
+  override open func viewDidLoad() {
     super.viewDidLoad()
     
     pageViewController.dataSource = self
@@ -68,8 +68,8 @@ public class PageController: UIViewController {
     view.addAndPinSubView(pageViewController.view)
   }
 
-  private func viewControllerForIndex(index: Int) -> UIViewController? {
-    guard let numberOfPages = dataSource?.numberOfViewControllers() where index >= 0 && index < numberOfPages  else {
+  fileprivate func viewControllerForIndex(_ index: Int) -> UIViewController? {
+    guard let numberOfPages = dataSource?.numberOfViewControllers(), index >= 0 && index < numberOfPages  else {
       return nil
     }
     
@@ -88,38 +88,38 @@ public class PageController: UIViewController {
    
    - parameter index: The index to move
    */
-  public func goToIndex(index: Int) {
+  open func goToIndex(_ index: Int) {
     guard let page = viewControllerForIndex(index) else {
       return
     }
     
-    let direction: UIPageViewControllerNavigationDirection = index > currentIndex ? .Forward : .Reverse
+    let direction: UIPageViewControllerNavigationDirection = index > currentIndex ? .forward : .reverse
     
     // Hacky: http://stackoverflow.com/a/18602186/428353
     pageViewController.setViewControllers([page], direction: direction, animated: true, completion: { finished in
-      dispatch_async(dispatch_get_main_queue(), {
+      DispatchQueue.main.async(execute: {
         self.pageViewController.setViewControllers([page], direction: direction, animated: false, completion: nil)
         self.currentIndex = index
-        self.pageIndexController?.collectionView.selectItemAtIndexPath(NSIndexPath(forRow: index, inSection: 0), animated: true, scrollPosition: .CenteredHorizontally)
+        self.pageIndexController?.collectionView.selectItem(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
       })
     })
   }
 }
 
 extension PageController: UIPageViewControllerDelegate {
-  public func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-    guard let currentIndex = pageViewController.viewControllers?.last?.index where completed else {
+  public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    guard let currentIndex = pageViewController.viewControllers?.last?.index, completed else {
       return
     }
     
     self.currentIndex = currentIndex
     
-    pageIndexController?.collectionView?.selectItemAtIndexPath(NSIndexPath(forRow: currentIndex, inSection: 0), animated: true, scrollPosition: .CenteredHorizontally)
+    pageIndexController?.collectionView?.selectItem(at: IndexPath(row: currentIndex, section: 0), animated: true, scrollPosition: .centeredHorizontally)
   }
 }
 
 extension PageController: UIPageViewControllerDataSource {
-  public func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+  public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
     guard let index = viewController.index else {
       return nil
     }
@@ -127,7 +127,7 @@ extension PageController: UIPageViewControllerDataSource {
     return viewControllerForIndex(index - 1)
   }
   
-  public func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+  public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
     guard let index = viewController.index else {
       return nil
     }

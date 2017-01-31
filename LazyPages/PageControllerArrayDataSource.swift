@@ -11,13 +11,13 @@ import UIKit
 
 /// Use this class when you want to create the Page Controller with all the view controllers initialised from the start
 public final class PageControllerArrayDataSource: PageControllerDataSource {
-  private let viewControllers: [UIViewController]
+  fileprivate let viewControllers: [UIViewController]
   
   public init(viewControllers: [UIViewController]) {
     self.viewControllers = viewControllers
   }
   
-  public func viewControllerAtIndex(index: Int) -> UIViewController {
+  public func viewControllerAtIndex(_ index: Int) -> UIViewController {
     return viewControllers[index]
   }
   

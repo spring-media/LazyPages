@@ -11,13 +11,13 @@ import UIKit
 
 /// Use this class when you want to create your view controllers by executing a closure by the right index
 public final class PageControllerClosureDataSource: PageControllerDataSource {
-  private let closures: [() -> UIViewController]
+  fileprivate let closures: [() -> UIViewController]
   
   public init(closures: [() -> UIViewController]) {
     self.closures = closures
   }
   
-  public func viewControllerAtIndex(index: Int) -> UIViewController {
+  public func viewControllerAtIndex(_ index: Int) -> UIViewController {
     return closures[index]()
   }
   

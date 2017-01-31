@@ -10,31 +10,31 @@ import UIKit
 import LazyPages
 
 class SampleViewController: UIViewController {
-  private enum ViewControllerTag {
-    case Color
-    case Label
+  fileprivate enum ViewControllerTag {
+    case color
+    case label
   }
   
-  private enum Segue: String {
+  fileprivate enum Segue: String {
     case PageController = "PageControllerSegue"
     case PageIndex = "PageIndexSegue"
   }
   
-  private enum ViewControllerIdentifier: String {
+  fileprivate enum ViewControllerIdentifier: String {
     case Color = "ColorViewController"
     case Label = "LabelViewController"
   }
   
-  private let startIndex = 4
-  private var cachedColors = [Int: UIColor]()
-  private let viewControllersToLoad = [
-    ViewControllerTag.Color,
-    ViewControllerTag.Label,
-    ViewControllerTag.Color,
-    ViewControllerTag.Label,
-    ViewControllerTag.Color,
-    ViewControllerTag.Color,
-    ViewControllerTag.Label
+  fileprivate let startIndex = 4
+  fileprivate var cachedColors = [Int: UIColor]()
+  fileprivate let viewControllersToLoad = [
+    ViewControllerTag.color,
+    ViewControllerTag.label,
+    ViewControllerTag.color,
+    ViewControllerTag.label,
+    ViewControllerTag.color,
+    ViewControllerTag.color,
+    ViewControllerTag.label
   ]
   
   weak var pageController: PageController? {
@@ -54,7 +54,7 @@ class SampleViewController: UIViewController {
     
     pageController?.goToIndex(startIndex)
   }
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let identifier = segue.identifier else {
       return
     }
@@ -65,14 +65,14 @@ class SampleViewController: UIViewController {
     
     switch segueEnum {
     case .PageController:
-      guard let pageController = segue.destinationViewController as? PageController else {
+      guard let pageController = segue.destination as? PageController else {
         break
       }
       
       self.pageController = pageController
       pageController.dataSource = self
     case .PageIndex:
-      guard let pageIndex = segue.destinationViewController as? PageIndexCollectionViewController else {
+      guard let pageIndex = segue.destination as? PageIndexCollectionViewController else {
         break
       }
       
@@ -81,12 +81,12 @@ class SampleViewController: UIViewController {
     }
   }
   
-  private func setControllersCoupling() {
+  fileprivate func setControllersCoupling() {
     pageController?.pageIndexController = self.pageIndex
     pageIndex?.pageController = self.pageController
   }
   
-  private func cachedColorFromMap(inout map: [Int: UIColor], index: Int) -> UIColor {
+  fileprivate func cachedColorFromMap(_ map: inout [Int: UIColor], index: Int) -> UIColor {
     guard let color = map[index] else {
       let newColor = UIColor.randomColor()
       map[index] = newColor
@@ -98,19 +98,19 @@ class SampleViewController: UIViewController {
 }
 
 extension SampleViewController: PageControllerDataSource {
-  func viewControllerAtIndex(index: Int) -> UIViewController {
+  func viewControllerAtIndex(_ index: Int) -> UIViewController {
     print("Loading page at index \(index)")
     let viewControllerTag = viewControllersToLoad[index]
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let viewControllerToReturn: UIViewController
     
     switch viewControllerTag {
-    case ViewControllerTag.Color:
-      let colorViewController = storyboard.instantiateViewControllerWithIdentifier(ViewControllerIdentifier.Color.rawValue) as! ColorViewController
+    case ViewControllerTag.color:
+      let colorViewController = storyboard.instantiateViewController(withIdentifier: ViewControllerIdentifier.Color.rawValue) as! ColorViewController
       colorViewController.color = cachedColorFromMap(&cachedColors, index: index)
       viewControllerToReturn = colorViewController
-    case ViewControllerTag.Label:
-      let labelViewController = storyboard.instantiateViewControllerWithIdentifier(ViewControllerIdentifier.Label.rawValue) as! LabelViewController
+    case ViewControllerTag.label:
+      let labelViewController = storyboard.instantiateViewController(withIdentifier: ViewControllerIdentifier.Label.rawValue) as! LabelViewController
       labelViewController.text = "Index \(index)"
       viewControllerToReturn = labelViewController
     }
@@ -124,8 +124,8 @@ extension SampleViewController: PageControllerDataSource {
 }
 
 extension SampleViewController: PageIndexCollectionViewControllerDataSource {
-  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! IndexCollectionViewCell
+  func collectionView(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! IndexCollectionViewCell
     cell.indexLabel.text = "\(indexPath.item)"
     return cell
   }
