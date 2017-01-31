@@ -15,14 +15,14 @@ extension UIView {
    
    - parameter subView: The view to be added an pinned
    */
-  func addAndPinSubView(subView: UIView) {
+  func addAndPinSubView(_ subView: UIView) {
     self.addSubview(subView)
     
     var viewBindingsDict = [String: AnyObject]()
     viewBindingsDict["subView"] = subView
-    self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
+    self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[subView]|",
       options: [], metrics: nil, views: viewBindingsDict))
-    self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
+    self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[subView]|",
       options: [], metrics: nil, views: viewBindingsDict))
   }
 }
