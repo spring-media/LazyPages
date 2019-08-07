@@ -20,9 +20,9 @@ extension UIView {
     
     var viewBindingsDict = [String: AnyObject]()
     viewBindingsDict["subView"] = subView
-    self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[subView]|",
+    self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[subView]|",
       options: [], metrics: nil, views: viewBindingsDict))
-    self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[subView]|",
+    self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[subView]|",
       options: [], metrics: nil, views: viewBindingsDict))
   }
 }

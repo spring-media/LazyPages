@@ -3,18 +3,18 @@
 [![CI Status](http://img.shields.io/travis/WeltN24/LazyPages.svg)](https://travis-ci.org/WeltN24/LazyPages)
 [![License](https://img.shields.io/cocoapods/l/LazyPages.svg)](http://cocoapods.org/pods/LazyPages)
 [![Platform](https://img.shields.io/cocoapods/p/LazyPages.svg)](http://cocoapods.org/pods/LazyPages)
-[![swift2](https://img.shields.io/badge/swift2-compatible-4BC51D.svg)](https://developer.apple.com/swift)
+[![swift5](https://img.shields.io/badge/swift5-compatible-4BC51D.svg)](https://developer.apple.com/swift)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/LazyPages.svg)](http://cocoapods.org/pods/LazyPages)
 
 ![MacDown Screenshot](READMEImages/LazyPages.gif)
 
-**LazyPages** is a highly customizable library that helps you to show a scrollable list of view controllers synchronized with an index. It is written in `Swift 2.2` for `iOS 8+`. 
+**LazyPages** is a highly customizable library that helps you to show a scrollable list of view controllers synchronized with an index. It is written in `Swift 5` for `iOS 8+`.
 
 ## Requirements
 
 * iOS 8.0+
-* Xcode 7.3+
+* Xcode 10.2+
 
 ## Features
 
@@ -27,9 +27,9 @@
 
 ## Usage
 
-An instance of `LazyPages` can be created from the storyboard or just programmatically. 
+An instance of `LazyPages` can be created from the storyboard or just programmatically.
 
-To create it from the storyboard: 
+To create it from the storyboard:
 
 * Add an instance of `UIViewController` to it. It will be the container of the Page Controller.
 * Add two container views, one for the index and one for the page controller.
@@ -39,28 +39,28 @@ To create it from the storyboard:
 In the code of our view controller, we have to link both view controllers together and set the proper data source. We can do that in the `prepareForSegue` method:
 
 ```swift
-override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let identifier = segue.identifier else {
       return
     }
-    
+
     guard let segueEnum = Segue(rawValue: identifier) else {
       return
     }
-    
+
     switch segueEnum {
     case .PageController:
       guard let pageController = segue.destinationViewController as? PageController else {
         break
       }
-      
+
       self.pageController = pageController
       pageController.dataSource = self
     case .PageIndex:
       guard let pageIndex = segue.destinationViewController as? PageIndexCollectionViewController else {
         break
       }
-      
+
       self.pageIndex = pageIndex
       pageIndex.dataSource = self
     }
@@ -77,12 +77,14 @@ pageIndex?.pageController = self.pageController
 To populate the views, we assign the data source properties for both the index and the Page Controller. For the Page Controller we can implement the data source ourselves, or use the provided data source classes (`PageControllerArrayDataSource` and `PageControllerClosureDataSource`) that respectively require an array of `UIViewController` or closures. We can easily define a visual state for selection in the index view by overriding the `selected` property in the `UICollectionViewCell` subclass that we provide in the `PageIndexCollectionViewController` data source:
 
 ```swift
-override var selected: Bool {
+override var isSelected: Bool {
     didSet {
-      if selected {
-        backgroundColor = UIColor.grayColor()
+      if isSelected {
+        backgroundColor = UIColor.gray
+        indexLabel.textColor = UIColor.white
       } else {
-        backgroundColor = UIColor.whiteColor()
+        backgroundColor = UIColor.white
+        indexLabel.textColor = UIColor.black
       }
     }
   }
@@ -118,7 +120,7 @@ LazyPages is available under the MIT license.
 
 ## Authors
 
-LazyPages was made in-house by WeltN24
+LazyPages was made in-house by Spring-Media
 
 ### Contributors
 

@@ -35,21 +35,21 @@ public class PageIndexCollectionViewController: UIViewController {
 }
 
 extension PageIndexCollectionViewController: UICollectionViewDataSource {
-  public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    assert(pageController != nil, "The page controller reference in the PageIndexCollectionViewController cannot be nil")
-    return pageController!.numberOfItems
+  public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    assert(dataSource != nil, "The data source of the PageIndexCollectionViewController cannot be nil")
+    return dataSource!.collectionView(collectionView: collectionView, cellForItemAtIndexPath: indexPath as NSIndexPath)
   }
   
-  public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    assert(dataSource != nil, "The data source of the PageIndexCollectionViewController cannot be nil")
-    return dataSource!.collectionView(collectionView, cellForItemAtIndexPath: indexPath)
+  public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    assert(pageController != nil, "The page controller reference in the PageIndexCollectionViewController cannot be nil")
+    return pageController!.numberOfItems
   }
 }
 
 extension PageIndexCollectionViewController: UICollectionViewDelegate {
-  public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+  public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let index = indexPath.row
-    pageController?.goToIndex(index)
-    collectionView.scrollToItemAtIndexPath(indexPath, atScrollPosition: .CenteredHorizontally, animated: true)
+    pageController?.goToIndex(index: index)
+    collectionView.scrollToItem(at: indexPath as IndexPath, at: .centeredHorizontally, animated: true)
   }
 }
