@@ -12,14 +12,14 @@ import UIKit
 final class IndexCollectionViewCell: UICollectionViewCell {
    @IBOutlet weak var indexLabel: UILabel!
   
-  override var selected: Bool {
+  override var isSelected: Bool {
     didSet {
-      if selected {
-        backgroundColor = UIColor.grayColor()
-        indexLabel.textColor = UIColor.whiteColor()
+      if isSelected {
+        backgroundColor = UIColor.gray
+        indexLabel.textColor = UIColor.white
       } else {
-        backgroundColor = UIColor.whiteColor()
-        indexLabel.textColor = UIColor.blackColor()
+        backgroundColor = UIColor.white
+        indexLabel.textColor = UIColor.black
       }
     }
   }

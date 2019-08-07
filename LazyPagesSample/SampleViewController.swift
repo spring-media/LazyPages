@@ -52,9 +52,9 @@ class SampleViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    pageController?.goToIndex(startIndex)
+    pageController?.goToIndex(index: startIndex)
   }
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let identifier = segue.identifier else {
       return
     }
@@ -65,14 +65,14 @@ class SampleViewController: UIViewController {
     
     switch segueEnum {
     case .PageController:
-      guard let pageController = segue.destinationViewController as? PageController else {
+      guard let pageController = segue.destination as? PageController else {
         break
       }
       
       self.pageController = pageController
       pageController.dataSource = self
     case .PageIndex:
-      guard let pageIndex = segue.destinationViewController as? PageIndexCollectionViewController else {
+      guard let pageIndex = segue.destination as? PageIndexCollectionViewController else {
         break
       }
       
@@ -86,7 +86,7 @@ class SampleViewController: UIViewController {
     pageIndex?.pageController = self.pageController
   }
   
-  private func cachedColorFromMap(inout map: [Int: UIColor], index: Int) -> UIColor {
+  private func cachedColorFromMap( map: inout [Int: UIColor], index: Int) -> UIColor {
     guard let color = map[index] else {
       let newColor = UIColor.randomColor()
       map[index] = newColor
@@ -106,11 +106,11 @@ extension SampleViewController: PageControllerDataSource {
     
     switch viewControllerTag {
     case ViewControllerTag.Color:
-      let colorViewController = storyboard.instantiateViewControllerWithIdentifier(ViewControllerIdentifier.Color.rawValue) as! ColorViewController
-      colorViewController.color = cachedColorFromMap(&cachedColors, index: index)
+      let colorViewController = storyboard.instantiateViewController(withIdentifier: ViewControllerIdentifier.Color.rawValue) as! ColorViewController
+      colorViewController.color = cachedColorFromMap(map: &cachedColors, index: index)
       viewControllerToReturn = colorViewController
     case ViewControllerTag.Label:
-      let labelViewController = storyboard.instantiateViewControllerWithIdentifier(ViewControllerIdentifier.Label.rawValue) as! LabelViewController
+      let labelViewController = storyboard.instantiateViewController(withIdentifier: ViewControllerIdentifier.Label.rawValue) as! LabelViewController
       labelViewController.text = "Index \(index)"
       viewControllerToReturn = labelViewController
     }
@@ -125,7 +125,7 @@ extension SampleViewController: PageControllerDataSource {
 
 extension SampleViewController: PageIndexCollectionViewControllerDataSource {
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath) as! IndexCollectionViewCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath as IndexPath) as! IndexCollectionViewCell
     cell.indexLabel.text = "\(indexPath.item)"
     return cell
   }
