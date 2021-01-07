@@ -48,12 +48,7 @@ class SampleViewController: UIViewController {
       self.setControllersCoupling()
     }
   }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    pageController?.goToIndex(index: startIndex)
-  }
+
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let identifier = segue.identifier else {
       return
@@ -99,7 +94,6 @@ class SampleViewController: UIViewController {
 
 extension SampleViewController: PageControllerDataSource {
   func viewControllerAtIndex(index: Int) -> UIViewController {
-    print("Loading page at index \(index)")
     let viewControllerTag = viewControllersToLoad[index]
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     let viewControllerToReturn: UIViewController
@@ -124,6 +118,10 @@ extension SampleViewController: PageControllerDataSource {
 }
 
 extension SampleViewController: PageIndexCollectionViewControllerDataSource {
+  func sizeForItem(at indexPath: IndexPath) -> CGSize {
+    CGSize(width: 100, height: 30)
+  }
+
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath as IndexPath) as! IndexCollectionViewCell
     cell.indexLabel.text = "\(indexPath.item)"
