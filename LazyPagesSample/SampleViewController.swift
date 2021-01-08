@@ -25,7 +25,6 @@ class SampleViewController: UIViewController {
     case Label = "LabelViewController"
   }
   
-  private let startIndex = 4
   private var cachedColors = [Int: UIColor]()
   private let viewControllersToLoad = [
     ViewControllerTag.Color,

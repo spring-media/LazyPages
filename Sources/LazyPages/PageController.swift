@@ -45,8 +45,8 @@ public class PageController: UIViewController {
     return pageViewController
   }()
 
-  private let cachingNeighborsCount = 2
   private var viewControllerCache = [Int: UIViewController]()
+  public var cachingNeighborsCount = 2
   public var currentIndex = 0
   public weak var pageIndexController: PageIndexCollectionViewController?
   public var currentlyDisplayedViewController: UIViewController? {

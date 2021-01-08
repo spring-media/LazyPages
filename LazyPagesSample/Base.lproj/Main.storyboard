@@ -27,8 +27,8 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label View Controller" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGF-Gz-SVg">
-                                <rect key="frame" x="20" y="55" width="560" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label View Controller" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGF-Gz-SVg">
+                                <rect key="frame" x="20" y="79" width="374" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="25X-sZ-4Tg"/>
                                     <constraint firstAttribute="height" constant="21" id="rFV-5n-7qf"/>
@@ -44,8 +44,6 @@
                             <constraint firstItem="MGF-Gz-SVg" firstAttribute="leading" secondItem="isz-Rg-KdT" secondAttribute="leading" constant="20" id="O8F-Sf-zkb"/>
                             <constraint firstItem="MGF-Gz-SVg" firstAttribute="centerX" secondItem="isz-Rg-KdT" secondAttribute="centerX" id="W5A-Tr-lO0"/>
                             <constraint firstItem="x5R-qp-kDT" firstAttribute="leading" secondItem="isz-Rg-KdT" secondAttribute="leading" constant="20" id="aCU-Ie-iYs"/>
-                            <constraint firstAttribute="trailing" secondItem="MGF-Gz-SVg" secondAttribute="trailing" constant="20" id="nbB-Xj-JHd"/>
-                            <constraint firstAttribute="trailing" secondItem="x5R-qp-kDT" secondAttribute="trailing" constant="20" id="wSl-5f-5wW"/>
                             <constraint firstItem="x5R-qp-kDT" firstAttribute="centerY" secondItem="isz-Rg-KdT" secondAttribute="centerY" id="zHT-bV-ZCM"/>
                             <constraint firstItem="x5R-qp-kDT" firstAttribute="centerX" secondItem="isz-Rg-KdT" secondAttribute="centerX" id="zkU-jI-lBD"/>
                         </constraints>
@@ -141,8 +139,8 @@
                                     <constraint firstAttribute="width" constant="240" id="hfS-qP-j5O"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Color View Controller" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8X1-FB-HLY">
-                                <rect key="frame" x="20" y="55" width="560" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color View Controller" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8X1-FB-HLY">
+                                <rect key="frame" x="20" y="79" width="374" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="WgU-cA-UbR"/>
                                 </constraints>

@@ -9,17 +9,17 @@
 
 ![MacDown Screenshot](READMEImages/LazyPages.gif)
 
-**LazyPages** is a highly customizable library that helps you to show a scrollable list of view controllers synchronized with an index. It is written in `Swift 5` for `iOS 8+`.
+**LazyPages** is a highly customizable library that helps you to show a scrollable list of view controllers synchronized with an index. It is written in `Swift 5` for `iOS 11+`.
 
 ## Requirements
 
-* iOS 8.0+
+* iOS 11+
 * Xcode 10.2+
 
 ## Features
 
 - [x] Lazy load of view controllers, that allow us not to have all of them in memory when initialazing LazyPages. Furthermore, we can also initialise it with all the `UIViewController` instances or with closures that provides them.
-- [x] View controllers are cached, and freed when memory is low.
+- [x] View controllers are cached, and freed when memory is low. The number of cached view controllers can be customized.
 - [x] View controllers can be instances of different subclasses of `UIViewController`.
 - [x] Highly customizable, we can place the index and pages views as we wish, as well as desigining the index cells, with the help of Storyboard. Scroll directions could be set as wished.
 - [x] Public API to go to a desired page.
@@ -90,29 +90,14 @@ override var isSelected: Bool {
   }
 ```
 
+If you want to customize the amount of view controllers you cache, customize the  `cachingNeighborsCount` property of `PageController` according to your needs.
+
 ##  Installation
-### CocoaPods
-`LazyPages` is available through CocoaPods. To install it, simply add the following line to your Podfile
-
+### Swift Package Manager
+Add `LazyPages` to your project through the Xcode or add the following line to your package dependencies: 
+```swift
+.package("https://github.com/spring-media/LazyPages", from: "1.0.0")
 ```
-pod "LazyPages"
-```
-### Carthage
-To integrate LazyPages into your Xcode project using Carthage, specify it in your `Cartfile`:
-
-```ogdl
-github "WeltN24/LazyPages"
-```
-
-Run `carthage update` to build the framework and drag the built `LazyPages.framework` into your Xcode project.
-
-### Manual Installation
- You can still add `LazyPages` as a submodule, drag and drop `LazyPages.xcodeproj` into your project, and embed `LazyPages.framework` in your target.
-
-- Drag `LazyPages.xcodeproj` to your project
-- Select your app target
-- Click the + button on the Embedded binaries section
-- Add `LazyPages.framework`
 
 ## License
 
@@ -126,4 +111,4 @@ LazyPages was made in-house by Spring-Media
 
 César Vargas Casaseca, cesar.vargas-casaseca@weltn24.de, [@toupper](https://github.com/toupper) on Github, [@VargasCasaseca](https://twitter.com/VargasCasaseca) on Twitter
 
-Vittorio Monaco, vittorio.monaco@weltn24.de, [@vittoriom](https://github.com/vittoriom) on Github, [@Vittorio_Monaco](https://twitter.com/Vittorio_Monaco) on Twitter
+Vittorio Monaco, [@vittoriom](https://github.com/vittoriom) on Github, [@Vittorio_Monaco](https://twitter.com/Vittorio_Monaco) on Twitter
