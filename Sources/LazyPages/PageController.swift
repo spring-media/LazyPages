@@ -15,18 +15,14 @@ public protocol PageControllerDelegate: AnyObject {
 
 /// The Data source of the page controller
 public protocol PageControllerDataSource: AnyObject {
-  /**
-   Asks the data source for a view controller given its index
-
-   - parameter index: The index when the view controller should be placed
-
-   - returns: The view controller to be shown at the given index
-   */
+  ///
+  /// Asks the data source for a view controller given its index
+  /// - Parameters:
+  ///   - index: The index when the view controller should be placed
+  /// - returns: The view controller to be shown at the given index
   func viewControllerAtIndex(index: Int) -> UIViewController
 
-  /**
-   - returns: The number of view controllers to be shown
-   */
+  /// The number of view controllers to be shown
   func numberOfViewControllers() -> Int
 }
 

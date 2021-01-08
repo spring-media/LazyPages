@@ -11,14 +11,13 @@ import simd
 import UIKit
 
 public protocol PageIndexCollectionViewControllerDataSource: AnyObject {
-  /**
-   The cell to be shown at the the given index
-
-   - parameter collectionView: the collection view where the index is represented
-   - parameter indexPath: the index path of the requested cell
-   */
+  /// The cell to be shown at the the given index
+  /// - Parameters:
+  ///   - collectionView: the collection view where the index is represented
+  ///   - indexPath: the index path of the requested cell
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
 
+  /// The size for item at the given index path
   func sizeForItem(at indexPath: IndexPath) -> CGSize
 }
 
