@@ -15,7 +15,7 @@ var AssociatedObjectHandle: UInt8 = 0
 extension UIViewController {
   var index: Int? {
     get {
-      return objc_getAssociatedObject(self, &AssociatedObjectHandle) as? Int
+      objc_getAssociatedObject(self, &AssociatedObjectHandle) as? Int
     }
     set {
       objc_setAssociatedObject(self, &AssociatedObjectHandle, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
