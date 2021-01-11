@@ -14,7 +14,7 @@
 ## Requirements
 
 * iOS 11+
-* Xcode 10.2+
+* Xcode 12.2+
 
 ## Features
 
